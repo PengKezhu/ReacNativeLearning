@@ -37,6 +37,8 @@ export default class MoviesScreen extends Component {
         title: '电影',
     };
 
+
+
     fetchData () {
         fetch(REQUEST_URL)
             .then((response) => response.json())
@@ -55,25 +57,37 @@ export default class MoviesScreen extends Component {
 
     renderMovie({item}) {
     return (
-        <View style={styles.container}>
-            <Image source={{uri : item.posters.thumbnail}} style={{width:100, height:100}}></Image>
-            <View style={styles.rightContainer}>
-                <Text style={styles.title}>{item.title}</Text>
+        <View style={styles.cell}>
+            <Image source={{uri : item.posters.thumbnail}} style={styles.image} borderRadius={5}></Image>
+            <View style={styles.infoView}>
+                <Text style={styles.title} numberOfLines ={1}>{item.title}</Text>
                 <Text style={styles.year}>{item.year}</Text>
             </View>
         </View>
     )
 }
 
+    renderSeparatorComponent () {
+        return (
+            <View style = {{height:1, backgroundColor: 'gray'}}>
+            </View>
+        )
+    }
+
     render () {
         if (!this.state.movies)
             return this.renderLoadingView();
         var movie = this.state.movies[0];
+        var ITEM_HEIGHT = 80;
         return (
             <View style={styles.container}>
             <FlatList
                 data = {this.state.movies}
                 renderItem = {this.renderMovie}
+                ItemSeparatorComponent = {this.renderSeparatorComponent}
+                getItemLayout={(data, index) => (
+                    {length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index}
+                    )}
             />
             </View>
         )
@@ -93,10 +107,27 @@ var styles = StyleSheet.create({
         },
         title : {
             fontSize : 20,
-            textAlign: 'center'
+            textAlign: 'left'
         },
         year: {
-            textAlign: 'center'
+            textAlign: 'left'
+        },
+        cell : {
+            height :  80,
+            flexDirection : 'row',
+            alignItems : 'center',
+        },
+        image : {
+            marginLeft : 15,
+            width : 60,
+            height : 60
+        },
+        infoView : {
+            flex : 1,
+            marginLeft : 10,
+            height : 60,
+            justifyContent : 'space-between',
+            // backgroundColor : 'blue'
         }
     }
 )

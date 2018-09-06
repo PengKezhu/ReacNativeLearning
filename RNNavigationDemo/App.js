@@ -14,6 +14,7 @@ import {
 import MainScreen from './MainScreen'
 import ProfileScreen from './ProfileScreen'
 import MoviesScreen from './MoviesScreen'
+import LoginScreen from './LoginScreen'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -32,6 +33,9 @@ const Root = StackNavigator(
         },
         Movies: {
             screen : MoviesScreen
+        },
+        Login : {
+            screen : LoginScreen
         }
     },
     {

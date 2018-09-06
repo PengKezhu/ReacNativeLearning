@@ -74,7 +74,7 @@ export default class MainScreen extends  Component {
     //   title : "DAO HANG LAN"
     // };
     static navigationOptions = {
-        title: 'Welcome',
+        title: '首页',
     };
 
     _onPressButton(){
@@ -87,6 +87,11 @@ export default class MainScreen extends  Component {
         navigate('Movies')
     }
 
+    _onPressLoginButton() {
+        const { navigate } = this.props.navigation;
+        navigate('Login')
+    }
+
     render () {
         const { navigate } = this.props.navigation;
         return (
@@ -94,6 +99,7 @@ export default class MainScreen extends  Component {
                 <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Fading in</Text>
                 <Button title="点击跳转主页" onPress={this._onPressButton.bind(this)} />
                 <Button title="点击跳转电影页面" onPress={this._onPressMoviesButton.bind(this)} />
+                <Button title="点击跳转登录页面" onPress={this._onPressLoginButton.bind(this)} />
             </FadeInView>
 
     );
