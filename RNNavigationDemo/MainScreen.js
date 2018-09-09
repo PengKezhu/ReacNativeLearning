@@ -92,14 +92,25 @@ export default class MainScreen extends  Component {
         navigate('Login')
     }
 
-    render () {
+    _onPressSectionListButton () {
         const { navigate } = this.props.navigation;
+        navigate('SectionList')
+    }
+
+    _onPressSegmentControlButton () {
+        const { navigate } = this.props.navigation;
+        navigate('SegmentControl')
+    }
+
+    render () {
         return (
             <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}>
                 <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Fading in</Text>
                 <Button title="点击跳转主页" onPress={this._onPressButton.bind(this)} />
                 <Button title="点击跳转电影页面" onPress={this._onPressMoviesButton.bind(this)} />
                 <Button title="点击跳转登录页面" onPress={this._onPressLoginButton.bind(this)} />
+                <Button title="点击跳转sectionList页面" onPress={this._onPressSectionListButton.bind(this)} />
+                <Button title="点击跳转SegmentControl页面" onPress={this._onPressSegmentControlButton.bind(this)} />
             </FadeInView>
 
     );
