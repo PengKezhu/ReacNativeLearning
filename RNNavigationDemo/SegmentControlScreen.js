@@ -14,7 +14,9 @@ import {Platform,
     SectionList,
     Slider,
     SegmentedControlIOS,
-    SnapshotViewIOS
+    SnapshotViewIOS,
+    StatusBar,
+    Switch
 } from 'react-native';
 
 import React, {Component} from 'react';
@@ -24,12 +26,14 @@ export default class SegmentControlScreen extends Component {
         super(props);
         this.state = {
             selectedIndex : 0,
-            sliderValue : 1
+            sliderValue : 1,
+            swichOn : true
         }
     }
 
     static navigationOptions = {
-        title: 'SegmentControl',
+        headerTitle: 'SegmentControl',
+        headerStyle : {backgroundColor : 'black'}
     };
 
     // _sliderValueChanged(value) {
@@ -47,9 +51,20 @@ export default class SegmentControlScreen extends Component {
     //     alert(description);
     // }
 
+    componentDidMount () {
+        // StatusBar.setBarStyle('light-content', true);
+    }
+
+    componentWillUnmount () {
+        StatusBar.setBarStyle('dark-content', false);
+        // alert('unmount');
+    }
+
+
     render () {
+
         return (
-             <View style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
+             <View style={{flex: 1, justifyContent:'center', alignItems:'center', backgroundColor:'white'}}>
                 <SegmentedControlIOS
                     style={{width: 200, height: 50}}
                     values={['One', 'Two']}
@@ -69,6 +84,10 @@ export default class SegmentControlScreen extends Component {
                         })
                     }}
                  />
+                 <StatusBar showHideTransition='fade' hidden={false} animated={true} barStyle='light-content'/>
+                 <Switch style={{width: 50, height: 30}} onTintColor='green' onValueChange={(value) => {
+                        this.setState({swichOn: value})
+                 }} value={this.state.swichOn} tintColor='black' />
             </View>
         )
     }

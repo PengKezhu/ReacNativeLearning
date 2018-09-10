@@ -22,7 +22,7 @@ export default class SectionListScreen extends Component {
     }
 
     static navigationOptions = {
-        title: '组列表',
+        headerTitle: '组列表',
     };
 
     render () {
