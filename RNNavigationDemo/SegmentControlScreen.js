@@ -16,7 +16,9 @@ import {Platform,
     SegmentedControlIOS,
     SnapshotViewIOS,
     StatusBar,
-    Switch
+    Switch,
+    TabBarIOS,
+    Dimensions
 } from 'react-native';
 
 import React, {Component} from 'react';
@@ -27,7 +29,8 @@ export default class SegmentControlScreen extends Component {
         this.state = {
             selectedIndex : 0,
             sliderValue : 1,
-            swichOn : true
+            swichOn : true,
+            tabSelectedIndex : 0,
         }
     }
 
@@ -62,9 +65,10 @@ export default class SegmentControlScreen extends Component {
 
 
     render () {
+      var {height,width} =  Dimensions.get('window');
 
         return (
-             <View style={{flex: 1, justifyContent:'center', alignItems:'center', backgroundColor:'white'}}>
+             <View style={{flex: 1, justifyContent:'center', backgroundColor:'white'}}>
                 <SegmentedControlIOS
                     style={{width: 200, height: 50}}
                     values={['One', 'Two']}
@@ -88,6 +92,42 @@ export default class SegmentControlScreen extends Component {
                  <Switch style={{width: 50, height: 30}} onTintColor='green' onValueChange={(value) => {
                         this.setState({swichOn: value})
                  }} value={this.state.swichOn} tintColor='black' />
+
+                 <TabBarIOS tintColor='red'>
+                   <TabBarIOS.Item
+                     title='Contacts'
+                     icon={require('./images/mom-icon.png')}
+                     selected={this.state.tabSelectedIndex == 0}
+                     onPress={()=>{
+                          this.setState({tabSelectedIndex:0})
+                     }}
+                     badge='6'
+                     renderAsOriginal={true}
+                   >
+                     <View/>
+                   </TabBarIOS.Item>
+
+                   <TabBarIOS.Item
+                     systemIcon="history"
+                     selected={this.state.tabSelectedIndex == 1}
+                     onPress={()=>{
+                          this.setState({tabSelectedIndex:1})
+                     }}
+
+                   >
+                     <View/>
+                   </TabBarIOS.Item>
+
+                   <TabBarIOS.Item
+                     systemIcon="downloads"
+                     onPress={()=>{
+                          this.setState({tabSelectedIndex:2})
+                     }}
+                     selected={this.state.tabSelectedIndex == 2}
+                   >
+                     <View/>
+                   </TabBarIOS.Item>
+                 </TabBarIOS>
             </View>
         )
     }

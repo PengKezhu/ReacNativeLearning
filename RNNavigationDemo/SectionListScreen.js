@@ -56,7 +56,7 @@ export default class SectionListScreen extends Component {
                          renderSectionHeader={({section: {value}}) => <View style={{height: 40, backgroundColor:'gray', justifyContent:'center'}}><Text>header_{value.name}{value.age}</Text></View>}
                          ItemSeparatorComponent={()=><View style={{height: 1, backgroundColor: 'gray'}}></View>}
                          stickySectionHeadersEnabled={true}
-            ></SectionList>
+            />
         )
     }
 }
