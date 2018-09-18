@@ -18,7 +18,8 @@ import {Platform,
     StatusBar,
     Switch,
     TabBarIOS,
-    Dimensions
+    Dimensions,
+    TextInput
 } from 'react-native';
 
 import React, {Component} from 'react';
@@ -31,6 +32,7 @@ export default class SegmentControlScreen extends Component {
             sliderValue : 1,
             swichOn : true,
             tabSelectedIndex : 0,
+            inputText:''
         }
     }
 
@@ -68,67 +70,94 @@ export default class SegmentControlScreen extends Component {
       var {height,width} =  Dimensions.get('window');
 
         return (
-             <View style={{flex: 1, justifyContent:'center', backgroundColor:'white'}}>
-                <SegmentedControlIOS
-                    style={{width: 200, height: 50}}
-                    values={['One', 'Two']}
-                    onValueChange={(value) => alert(value.toString())}
-                    selectedIndex={this.state.selectedIndex}
-                    onChange={(event) => this.setState({selectedindex: event.nativeEvent.selectedSegmentIndex})}
+          <TouchableHighlight style={{flex:1}} onPress={()=>this.refs.textInput1.blur()}>
+            <View style={{flex: 1, justifyContent:'center', backgroundColor:'white'}}>
+               <SegmentedControlIOS
+                   style={{width: 200, height: 50}}
+                   values={['One', 'Two']}
+                   onValueChange={(value) => alert(value.toString())}
+                   selectedIndex={this.state.selectedIndex}
+                   onChange={(event) => this.setState({selectedindex: event.nativeEvent.selectedSegmentIndex})}
+               />
+                <Slider
+                   style={{width: 200, height: 10, marginTop: 50+this.state.sliderValue}}
+                   maximumValue={100}
+                   minimumTrackTintColor='red'
+                   maximumTrackTintColor= 'blue'
+                   minimumValue={1}
+                   onValueChange={(value) => {
+                       this.setState({
+                           sliderValue : value
+                       })
+                   }}
                 />
-                 <Slider
-                    style={{width: 200, height: 10, marginTop: 50+this.state.sliderValue}}
-                    maximumValue={100}
-                    minimumTrackTintColor='red'
-                    maximumTrackTintColor= 'blue'
-                    minimumValue={1}
-                    onValueChange={(value) => {
-                        this.setState({
-                            sliderValue : value
-                        })
+                <StatusBar showHideTransition='fade' hidden={false} animated={true} barStyle='light-content'/>
+                <Switch style={{width: 50, height: 30}} onTintColor='green' onValueChange={(value) => {
+                       this.setState({swichOn: value})
+                }} value={this.state.swichOn} tintColor='black' />
+
+
+               <Text style={{fontWeight: 'bold', fontSize: 30, backgroundColor:'white', textAlign: 'center', lineHeight:50}} selectable={false} textShadowOffset={{width:10,height:10}} textShadowColor='red' numberOfLines={1} onPress={()=>{alert(this.state.inputText)}} pressRetentionOffset={{top:100, left:10, bottom:10,right:10}} >
+                 I am bold jflksfjlafjklasdfjklasfjklafjkalsfjklasfjklasf
+                 <Text style={{color: 'red', fontSize: 15}}> and red </Text>
+                 <Text style={{color: 'red', fontSize: 15}}> and red </Text>
+               </Text>
+               <Text style={{color: 'blue', fontSize: 15}}> blue another text </Text>
+
+               <TextInput style={{height: 50,width:100, borderColor:'black', borderWidth:1}}
+                 ref='textInput1'
+                  // onBlur={()=>alert('失去焦点')}
+                   keyboardType='number-pad'
+                    placeholder='placeholder text'
+                     clearButtonMode='while-editing'
+                      multiline={false}
+                       onChangeText={(text)=>this.setState({inputText:text})}
+                       returnKeyType='done'
+                       blurOnSubmit={true}
+                       secureTextEntry={false}
+                       maxLength={10}
+                       // onFocus={()=>alert('聚焦')}
+                       // onKeyPress={(aKey)=>alert(aKey)}
+                       ></TextInput>
+
+                <TabBarIOS tintColor='red'>
+                  <TabBarIOS.Item
+                    title='Contacts'
+                    icon={require('./images/mom-icon.png')}
+                    selected={this.state.tabSelectedIndex == 0}
+                    onPress={()=>{
+                         this.setState({tabSelectedIndex:0})
                     }}
-                 />
-                 <StatusBar showHideTransition='fade' hidden={false} animated={true} barStyle='light-content'/>
-                 <Switch style={{width: 50, height: 30}} onTintColor='green' onValueChange={(value) => {
-                        this.setState({swichOn: value})
-                 }} value={this.state.swichOn} tintColor='black' />
+                    badge='6'
+                    renderAsOriginal={true}
+                  >
+                    <View/>
+                  </TabBarIOS.Item>
 
-                 <TabBarIOS tintColor='red'>
-                   <TabBarIOS.Item
-                     title='Contacts'
-                     icon={require('./images/mom-icon.png')}
-                     selected={this.state.tabSelectedIndex == 0}
-                     onPress={()=>{
-                          this.setState({tabSelectedIndex:0})
-                     }}
-                     badge='6'
-                     renderAsOriginal={true}
-                   >
-                     <View/>
-                   </TabBarIOS.Item>
+                  <TabBarIOS.Item
+                    systemIcon="history"
+                    selected={this.state.tabSelectedIndex == 1}
+                    onPress={()=>{
+                         this.setState({tabSelectedIndex:1})
+                    }}
 
-                   <TabBarIOS.Item
-                     systemIcon="history"
-                     selected={this.state.tabSelectedIndex == 1}
-                     onPress={()=>{
-                          this.setState({tabSelectedIndex:1})
-                     }}
+                  >
+                    <View/>
+                  </TabBarIOS.Item>
 
-                   >
-                     <View/>
-                   </TabBarIOS.Item>
+                  <TabBarIOS.Item
+                    systemIcon="downloads"
+                    onPress={()=>{
+                         this.setState({tabSelectedIndex:2})
+                    }}
+                    selected={this.state.tabSelectedIndex == 2}
+                  >
+                    <View/>
+                  </TabBarIOS.Item>
+                </TabBarIOS>
+           </View>
 
-                   <TabBarIOS.Item
-                     systemIcon="downloads"
-                     onPress={()=>{
-                          this.setState({tabSelectedIndex:2})
-                     }}
-                     selected={this.state.tabSelectedIndex == 2}
-                   >
-                     <View/>
-                   </TabBarIOS.Item>
-                 </TabBarIOS>
-            </View>
+          </TouchableHighlight>
         )
     }
 }
