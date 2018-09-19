@@ -19,7 +19,8 @@ import {Platform,
     Switch,
     TabBarIOS,
     Dimensions,
-    TextInput
+    TextInput,
+    TouchableOpacity
 } from 'react-native';
 
 import React, {Component} from 'react';
@@ -32,7 +33,8 @@ export default class SegmentControlScreen extends Component {
             sliderValue : 1,
             swichOn : true,
             tabSelectedIndex : 0,
-            inputText:''
+            inputText:'',
+            clickedTimes: 0
         }
     }
 
@@ -98,7 +100,7 @@ export default class SegmentControlScreen extends Component {
 
 
                <Text style={{fontWeight: 'bold', fontSize: 30, backgroundColor:'white', textAlign: 'center', lineHeight:50}} selectable={false} textShadowOffset={{width:10,height:10}} textShadowColor='red' numberOfLines={1} onPress={()=>{alert(this.state.inputText)}} pressRetentionOffset={{top:100, left:10, bottom:10,right:10}} >
-                 I am bold jflksfjlafjklasdfjklasfjklafjkalsfjklasfjklasf
+                 I am bold 长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试
                  <Text style={{color: 'red', fontSize: 15}}> and red </Text>
                  <Text style={{color: 'red', fontSize: 15}}> and red </Text>
                </Text>
@@ -118,7 +120,30 @@ export default class SegmentControlScreen extends Component {
                        maxLength={10}
                        // onFocus={()=>alert('聚焦')}
                        // onKeyPress={(aKey)=>alert(aKey)}
-                       ></TextInput>
+                 />
+
+                 <TouchableHighlight style={{width: 100,height: 50, backgroundColor: 'gray', justifyContent:'center', alignItems: 'center'}} activeOpacity={0.1} underlayColor='red' onPress={()=>{this.setState({clickedTimes: this.state.clickedTimes+1})}}>
+                  <Text>Press Me</Text>
+                 </TouchableHighlight>
+
+                 <TouchableOpacity style={{width: 100,height: 50, backgroundColor: '#DDDDDD', justifyContent:'center', alignItems: 'center'}} activeOpacity={0.1} underlayColor='red' onPress={()=>{this.setState({clickedTimes: this.state.clickedTimes+1})}}>
+                  <Text>Press Me</Text>
+                 </TouchableOpacity>
+
+                 <Text>{this.state.clickedTimes}</Text>
+
+                 <View style={{backgroundColor: 'green', width: 40, height: 20}} hitSlop={{top: 10, bottom: 10, left: 0, right: 0}}></View>
+
+                 <ViewPagerAndroid
+                       style={styles.viewPager}
+                       initialPage={0}>
+                       <View style={styles.pageStyle} key="1">
+                         <Text>First page</Text>
+                       </View>
+                       <View style={styles.pageStyle} key="2">
+                         <Text>Second page</Text>
+                       </View>
+                     </ViewPagerAndroid>
 
                 <TabBarIOS tintColor='red'>
                   <TabBarIOS.Item
