@@ -20,7 +20,8 @@ import {Platform,
     TabBarIOS,
     Dimensions,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    ViewPagerAndroid
 } from 'react-native';
 
 import React, {Component} from 'react';
@@ -134,7 +135,7 @@ export default class SegmentControlScreen extends Component {
 
                  <View style={{backgroundColor: 'green', width: 40, height: 20}} hitSlop={{top: 10, bottom: 10, left: 0, right: 0}}></View>
 
-                 <ViewPagerAndroid
+                 {/* <ViewPagerAndroid
                        style={styles.viewPager}
                        initialPage={0}>
                        <View style={styles.pageStyle} key="1">
@@ -143,7 +144,7 @@ export default class SegmentControlScreen extends Component {
                        <View style={styles.pageStyle} key="2">
                          <Text>Second page</Text>
                        </View>
-                     </ViewPagerAndroid>
+                     </ViewPagerAndroid> */}
 
                 <TabBarIOS tintColor='red'>
                   <TabBarIOS.Item

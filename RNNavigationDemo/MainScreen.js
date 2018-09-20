@@ -102,6 +102,11 @@ export default class MainScreen extends  Component {
         navigate('SegmentControl')
     }
 
+    _onPressWebViewButton () {
+      const { navigate } = this.props.navigation;
+      navigate('WebViewScreen')
+    }
+
     render () {
         return (
             <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}>
@@ -111,6 +116,7 @@ export default class MainScreen extends  Component {
                 <Button title="点击跳转登录页面" onPress={this._onPressLoginButton.bind(this)} />
                 <Button title="点击跳转sectionList页面" onPress={this._onPressSectionListButton.bind(this)} />
                 <Button title="点击跳转SegmentControl页面" onPress={this._onPressSegmentControlButton.bind(this)} />
+                <Button title="点击跳转webView页面" onPress={this._onPressWebViewButton.bind(this)} />
             </FadeInView>
 
     );
