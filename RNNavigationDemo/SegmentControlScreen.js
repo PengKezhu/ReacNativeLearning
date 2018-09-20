@@ -188,13 +188,7 @@ export default class SegmentControlScreen extends Component {
 
           </TouchableHighlight>
         )
-  static navigationOptions = {
-    headerTitle: 'SegmentControl',
-    headerStyle: {
-      backgroundColor: 'black'
-    }
-  };
-
+}
   // _sliderValueChanged(value) {
   //     alert({value})
   //     this._writeObj(value);
