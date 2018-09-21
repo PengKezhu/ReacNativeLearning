@@ -10,7 +10,11 @@ import {
   Animated,
   Button,
   ActionSheetIOS,
-  Alert
+  Alert,
+  Easing,
+  AsyncStorage,
+  CameraRoll,
+  TouchableOpacity
 } from 'react-native';
 import React, {Component} from 'react';
 
@@ -39,35 +43,6 @@ class FadeInView extends Component {
   }
 }
 
-// class FadeInView extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             fadeValue: new Animated.Value(0),           透明度初始值设为0
-//         };
-//     }
-//     componentDidMount() {
-//         Animated.timing(                             随时间变化而执行的动画类型
-//             this.state.fadeValue,                       动画中的变量值
-//             {
-//                 toValue: 1,                              透明度最终变为1，即完全不透明
-//             }
-//         ).start();                                   开始执行动画
-//     }
-//     render() {
-//         return (
-//             <Animated.View                             可动画化的视图组件
-//                 style={{
-//                     ...this.props.style,
-//                     opacity: this.state.fadeValue,           将透明度指定为动画变量值
-//                 }}
-//             >
-//                 {this.props.children}
-//             </Animated.View>
-//         );
-//     }
-// }
-
 class CC extends Component {
   constructor(props) {
     super(props)
@@ -83,6 +58,36 @@ export default class MainScreen extends Component {
   // static  navigationOptions = {
   //   title : "DAO HANG LAN"
   // };
+
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      animatedValue: new Animated.Value(0),
+      animatedWidth: new Animated.Value(100),
+      imgURL:'http://www.hangge.com/blog/images/logo.png'
+    }
+  }
+
+  componentDidMount() {
+    var timing = Animated.timing
+    Animated.parallel([
+      timing(this.state.animatedValue, {
+        duration: 3000,
+        toValue: 50
+      }),
+      timing(this.state.animatedWidth, {
+        duration: 3000,
+        toValue: 50
+      })
+    ]).start();
+    // Animated.timing(this.state.animatedValue, {
+    //   duration: 7000,
+    //   toValue: 100,
+    //   easing: Easing.linear // 缓动函数
+    // }).start();
+  }
+
   static navigationOptions = {
     title: '首页'
   };
@@ -90,6 +95,25 @@ export default class MainScreen extends Component {
   _onPressButton() {
     const {navigate} = this.props.navigation;
     navigate('Profile', {name: 'Jane'})
+
+    let userHabit = {
+      button: 'profileButton',
+      user: {age: 10}
+    };
+
+    let userHabitDelta = {
+      button: 'profileButtonTwo',
+      user: {tall: 180}
+    };
+
+    AsyncStorage.setItem('userHabit', JSON.stringify(userHabit), (error)=>{
+      AsyncStorage.mergeItem('userHabit', JSON.stringify(userHabitDelta), (error)=>{
+        AsyncStorage.getItem('userHabit', (error, result) => {
+          alert(result);
+        })
+      })
+    })
+
   }
 
   _onPressMoviesButton() {
@@ -112,8 +136,8 @@ export default class MainScreen extends Component {
     navigate('SegmentControl')
   }
 
-  _onPressWebViewButton () {
-    const { navigate } = this.props.navigation;
+  _onPressWebViewButton() {
+    const {navigate} = this.props.navigation;
     navigate('WebViewScreen')
   }
 
@@ -139,7 +163,7 @@ export default class MainScreen extends Component {
         onPress: () => alert('canceled')
       }, {
         text: 'confirm',
-        onPress: () => alert('confirmed')
+        onPress: () => alert(this.state.imgURL)
       }
     ])
   }
@@ -148,7 +172,8 @@ export default class MainScreen extends Component {
     return (<FadeInView style={{
         width: 250,
         height: 50,
-        backgroundColor: 'powderblue'
+        backgroundColor: 'powderblue',
+        alignItems: 'center'
       }}>
       <Text style={{
           fontSize: 28,
@@ -162,7 +187,37 @@ export default class MainScreen extends Component {
       <Button title="点击跳转SegmentControl页面" onPress={this._onPressSegmentControlButton.bind(this)}/>
       <Button title="点击展示actionSheet" onPress={this._showActionSheetIOS.bind(this)}/>
       <Button title="点击展示alert" onPress={this._showAlert.bind(this)}/>
-      <Button title="点击跳转webView页面" onPress={this._onPressWebViewButton.bind(this)} />
+      <Button title="点击跳转webView页面" onPress={this._onPressWebViewButton.bind(this)}/>
+      <Image style={{width: 50,height: 50}} source={{uri: this.state.imgURL}}></Image>
+
+      <Animated.View style={{
+          width: 50,
+          height: this.state.animatedWidth,
+          backgroundColor: 'black',
+          // opacity: this.state.animatedValue,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: this.state.animatedValue
+        }}>
+        <TouchableOpacity>
+          <Text style={{
+              width: 30,
+              height: 20,
+              color: 'white'
+            }}
+            onPress={()=>{
+              // CameraRoll.saveToCameraRoll(imgURL);
+              CameraRoll.getPhotos({first: 1,
+                                    assetType: 'Photos',
+              }).then(r => {
+                  this.setState({imgURL: r.edges[0].node.image.uri})
+                  alert(this.state.imgURL)
+              })
+            }}
+            >HAHAHAHAH</Text>
+        </TouchableOpacity>
+      </Animated.View>
+
     </FadeInView>);
   }
 } {/* <ScrollView> */
@@ -176,10 +231,10 @@ export default class MainScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-    }
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  }
 });
