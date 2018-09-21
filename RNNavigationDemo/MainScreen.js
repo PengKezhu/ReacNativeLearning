@@ -14,7 +14,10 @@ import {
   Easing,
   AsyncStorage,
   CameraRoll,
-  TouchableOpacity
+  TouchableOpacity,
+  Clipboard,
+  Dimensions,
+  ImagePickerIOS
 } from 'react-native';
 import React, {Component} from 'react';
 
@@ -65,11 +68,28 @@ export default class MainScreen extends Component {
     this.state = {
       animatedValue: new Animated.Value(0),
       animatedWidth: new Animated.Value(100),
-      imgURL:'http://www.hangge.com/blog/images/logo.png'
+      imgURL:'http://www.hangge.com/blog/images/logo.png',
+      location: null,
+      pickedImg: 'http://www.hangge.com/blog/images/logo.png'
     }
+    this._getClipboardStr.bind(this);
   }
 
   componentDidMount() {
+// navigator.geolocation.getCurrentPosition((position)=>{
+//     this.setState({location: JSON.stringify(position)})
+// },
+//   (error) => alert(error.message),
+//   {timeout: 15000, maximumAge: 1000, enableHighAccuracy: true}
+// )
+
+navigator.geolocation.watchPosition((position) => {
+  this.setState({location: JSON.stringify(position)})
+},
+(error) => alert(error.message),
+{timeout: 15000, maximumAge: 1000, distanceFilter: 1000}
+)
+
     var timing = Animated.timing
     Animated.parallel([
       timing(this.state.animatedValue, {
@@ -81,6 +101,11 @@ export default class MainScreen extends Component {
         toValue: 50
       })
     ]).start();
+// Geolocation.requestAuthorization();
+    // Geolocation.setRNConfiguration(config);
+
+
+// Geolocation.requestAuthorization();
     // Animated.timing(this.state.animatedValue, {
     //   duration: 7000,
     //   toValue: 100,
@@ -114,11 +139,20 @@ export default class MainScreen extends Component {
       })
     })
 
+    Clipboard.setString('剪贴板内容');
   }
 
   _onPressMoviesButton() {
     const {navigate} = this.props.navigation;
     navigate('Movies')
+    this._getClipboardStr();
+  }
+
+  async _getClipboardStr () {
+    var clipboardString = await Clipboard.getString();
+
+    alert(clipboardString);
+
   }
 
   _onPressLoginButton() {
@@ -168,7 +202,13 @@ export default class MainScreen extends Component {
     ])
   }
 
+  _pickPhoto() {
+    // ImagePickerIOS.openCameraDialog({}, (img) => this.setState({pickedImg: img}), (error)=>{alert(error)})
+    ImagePickerIOS.openSelectDialog({}, (img) => this.setState({pickedImg: img}), (error)=>{alert(error)})
+  }
+
   render() {
+    var {width, height} = Dimensions.get('window');
     return (<FadeInView style={{
         width: 250,
         height: 50,
@@ -188,8 +228,19 @@ export default class MainScreen extends Component {
       <Button title="点击展示actionSheet" onPress={this._showActionSheetIOS.bind(this)}/>
       <Button title="点击展示alert" onPress={this._showAlert.bind(this)}/>
       <Button title="点击跳转webView页面" onPress={this._onPressWebViewButton.bind(this)}/>
-      <Image style={{width: 50,height: 50}} source={{uri: this.state.imgURL}}></Image>
+      <View>
+        <Button title="点击跳转选择照片" onPress={this._pickPhoto.bind(this)}/>
+        <Image style={{width:50, height: 50}} source={{uri: this.state.pickedImg}}></Image>
+      </View>
+{/* //请注意下列边框圆角样式目前在 iOS 的图片组件上还不支持：
+//borderTopLeftRadius
+//borderTopRightRadius
+//borderBottomLeftRadius
+//borderBottomRightRadius */}
 
+
+      <Image style={{width: 50,height: 50, borderRadius: 10,borderWidth:1,borderColor:'white', backgroundColor: 'blue', overflow: 'hidden'}} source={{uri: this.state.imgURL}} ></Image>
+      <Text style={{width: width, height: 100, borderRadius: 10,borderWidth:1, borderColor:'white', backgroundColor:'red', overflow: 'hidden'}}>{this.state.location}</Text>
       <Animated.View style={{
           width: 50,
           height: this.state.animatedWidth,
