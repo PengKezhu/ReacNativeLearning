@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+constructor	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  constructor(props) {$/;"	function	line:25
+state.fadeValue	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^    this.state = {$/;"	property	line:27
+componentDidMount	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  componentDidMount() {$/;"	function	line:32
+render	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  render() {$/;"	function	line:39
+constructor	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  constructor(props) {$/;"	function	line:50
+render	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  render() {$/;"	function	line:53
+constructor	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  constructor(props) {$/;"	function	line:66
+state.animatedValue	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^    this.state = {$/;"	property	line:68
+componentDidMount	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  componentDidMount() {$/;"	function	line:78
+static.title	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  static navigationOptions = {$/;"	property	line:116
+_onPressButton	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _onPressButton() {$/;"	function	line:120
+navigate.button	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^    let userHabit = {$/;"	property	line:124
+navigate.user	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^      button: 'profileButton',$/;"	property	line:125
+let.button	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^    let userHabitDelta = {$/;"	property	line:129
+let.user	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^      button: 'profileButtonTwo',$/;"	property	line:130
+_onPressMoviesButton	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _onPressMoviesButton() {$/;"	function	line:145
+_onPressLoginButton	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _onPressLoginButton() {$/;"	function	line:158
+_onPressSectionListButton	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _onPressSectionListButton() {$/;"	function	line:163
+_onPressSegmentControlButton	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _onPressSegmentControlButton() {$/;"	function	line:168
+_onPressWebViewButton	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _onPressWebViewButton() {$/;"	function	line:173
+_showActionSheetIOS	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _showActionSheetIOS() {$/;"	function	line:178
+_showAlert	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _showAlert() {$/;"	function	line:193
+_pickPhoto	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  _pickPhoto() {$/;"	function	line:205
+render	/Users/zhuzi/Documents/Kevin/MyGithub/ReacNativeLearning/RNNavigationDemo/MainScreen.js	/^  render() {$/;"	function	line:212

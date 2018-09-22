@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {
-    StackNavigator,
+    createStackNavigator,
 } from 'react-navigation';
 import MainScreen from './MainScreen'
 import ProfileScreen from './ProfileScreen'
@@ -18,6 +18,8 @@ import LoginScreen from './LoginScreen'
 import SectionListScreen from "./SectionListScreen";
 import SegmentControlScreen from "./SegmentControlScreen";
 import WebViewScreen from './WebViewScreen'
+import KeyboardScreen from './KeyboardScreen'
+import LinkingScreen from './LinkingScreen'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -26,7 +28,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-const Root = StackNavigator(
+const Root = createStackNavigator(
     {
         Home: {
             screen: MainScreen,
@@ -48,6 +50,12 @@ const Root = StackNavigator(
         },
         WebViewScreen : {
           screen : WebViewScreen
+        },
+        KeyboardScreen : {
+          screen : KeyboardScreen
+        },
+        LinkingScreen : {
+            screen : LinkingScreen
         }
     },
     {

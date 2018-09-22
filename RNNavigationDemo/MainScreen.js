@@ -207,6 +207,15 @@ navigator.geolocation.watchPosition((position) => {
     ImagePickerIOS.openSelectDialog({}, (img) => this.setState({pickedImg: img}), (error)=>{alert(error)})
   }
 
+
+  _pressShowKeyBoardButton () {
+    this.props.navigation.navigate('KeyboardScreen');
+  }
+
+  _pressLinkingButton () {
+    this.props.navigation.navigate('LinkingScreen');
+  }
+
   render() {
     var {width, height} = Dimensions.get('window');
     return (<FadeInView style={{
@@ -228,10 +237,12 @@ navigator.geolocation.watchPosition((position) => {
       <Button title="点击展示actionSheet" onPress={this._showActionSheetIOS.bind(this)}/>
       <Button title="点击展示alert" onPress={this._showAlert.bind(this)}/>
       <Button title="点击跳转webView页面" onPress={this._onPressWebViewButton.bind(this)}/>
-      <View>
+      <View style={{flexDirection : 'row'}}>
         <Button title="点击跳转选择照片" onPress={this._pickPhoto.bind(this)}/>
         <Image style={{width:50, height: 50}} source={{uri: this.state.pickedImg}}></Image>
       </View>
+      <Button title="点击跳转Keyboard页面" onPress={this._pressShowKeyBoardButton.bind(this)}/>
+      <Button title="点击跳转Linking页面" onPress={this._pressLinkingButton.bind(this)}/>
 {/* //请注意下列边框圆角样式目前在 iOS 的图片组件上还不支持：
 //borderTopLeftRadius
 //borderTopRightRadius
