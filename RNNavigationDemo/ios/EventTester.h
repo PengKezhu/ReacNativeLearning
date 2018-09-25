@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Facebook. All rights reserved.
 //
 
-#import "RCTEventEmitter.h"
+#import <React/RCTEventEmitter.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -216,6 +216,10 @@ navigator.geolocation.watchPosition((position) => {
     this.props.navigation.navigate('LinkingScreen');
   }
 
+  _pressMedalButton () {
+    this.props.navigation.navigate('MedalScreen');
+  }
+
   render() {
     var {width, height} = Dimensions.get('window');
     return (<FadeInView style={{
@@ -243,6 +247,7 @@ navigator.geolocation.watchPosition((position) => {
       </View>
       <Button title="点击跳转Keyboard页面" onPress={this._pressShowKeyBoardButton.bind(this)}/>
       <Button title="点击跳转Linking页面" onPress={this._pressLinkingButton.bind(this)}/>
+      <Button title="点击跳转勋章页面" onPress={this._pressMedalButton.bind(this)}/>
 {/* //请注意下列边框圆角样式目前在 iOS 的图片组件上还不支持：
 //borderTopLeftRadius
 //borderTopRightRadius

@@ -1,3 +1,7 @@
 rootProject.name = 'RNNavigationDemo'
+include ':react-native-kevin-library'
+project(':react-native-kevin-library').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-kevin-library/android')
+include ':react-native-my-fancy-library'
+project(':react-native-my-fancy-library').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-my-fancy-library/android')
 
 include ':app'

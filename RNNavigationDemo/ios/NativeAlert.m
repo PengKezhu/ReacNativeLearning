@@ -7,7 +7,18 @@
 //
 
 #import "NativeAlert.h"
+#import <UIKit/UIKit.h>
 
 @implementation NativeAlert
+
+RCT_EXPORT_MODULE();
+
+RCT_EXPORT_METHOD(showAlert:(NSDictionary *)alertDetails) {
+  NSLog(@"alertDetails>>>>>: %@", alertDetails);
+}
+
+- (NSDictionary *)constantsToExport {
+  return @{@"deviceName" : UIDevice.currentDevice.name};
+}
 
 @end
