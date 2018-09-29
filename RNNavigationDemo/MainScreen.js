@@ -73,6 +73,7 @@ export default class MainScreen extends Component {
       pickedImg: 'http://www.hangge.com/blog/images/logo.png'
     }
     this._getClipboardStr.bind(this);
+    this._onPressLoginButton = this._onPressLoginButton.bind(this);
   }
 
   componentDidMount() {
@@ -158,6 +159,7 @@ navigator.geolocation.watchPosition((position) => {
   _onPressLoginButton() {
     const {navigate} = this.props.navigation;
     navigate('Login')
+    // alert(this.state.imgURL)
   }
 
   _onPressSectionListButton() {
@@ -235,7 +237,7 @@ navigator.geolocation.watchPosition((position) => {
         }}>Fading in</Text>
       <Button title="点击跳转主页" onPress={this._onPressButton.bind(this)}/>
       <Button title="点击跳转电影页面" onPress={this._onPressMoviesButton.bind(this)}/>
-      <Button title="点击跳转登录页面" onPress={this._onPressLoginButton.bind(this)}/>
+      <Button title="点击跳转登录页面" onPress={this._onPressLoginButton}/>
       <Button title="点击跳转sectionList页面" onPress={this._onPressSectionListButton.bind(this)}/>
       <Button title="点击跳转SegmentControl页面" onPress={this._onPressSegmentControlButton.bind(this)}/>
       <Button title="点击展示actionSheet" onPress={this._showActionSheetIOS.bind(this)}/>
