@@ -17,23 +17,23 @@ import {
   NativeEventEmitter
 } from 'react-native'
 
-import RNMyFancyLibrary from 'react-native-my-fancy-library';
-import RNKevinLibrary from 'react-native-kevin-library';
+// import RNMyFancyLibrary from 'react-native-my-fancy-library';
+// import RNKevinLibrary from 'react-native-kevin-library';
 
 export default class LinkingScreen extends Component {
 constructor(props) {
   super(props)
-RNKevinLibrary.testLog('I am RN String');
+// RNKevinLibrary.testLog('I am RN String');
 
-RNKevinLibrary.doSomethingAsync({name: 'kezhu'}).then((result)=>{
-  // alert(result);
-},
-(errorResult)=>{
+// RNKevinLibrary.doSomethingAsync({name: 'kezhu'}).then((result)=>{
+//   // alert(result);
+// },
+// (errorResult)=>{
 
-}
-)
+// }
+// )
 
-  alert(RNKevinLibrary);
+  // alert(RNKevinLibrary);
   // RNMyFancyLibrary.testLog('HHHH');
   // alert(RNMyFancyLibrary);
 
