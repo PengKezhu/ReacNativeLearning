@@ -1,4 +1,6 @@
 rootProject.name = 'RNNavigationDemo'
+include ':react-native-update'
+project(':react-native-update').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-update/android')
 include ':react-native-kevin-library'
 project(':react-native-kevin-library').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-kevin-library/android')
 include ':react-native-my-fancy-library'

@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-update')
     compile project(':react-native-kevin-library')
     compile project(':react-native-my-fancy-library')
     compile fileTree(dir: "libs", include: ["*.jar"])

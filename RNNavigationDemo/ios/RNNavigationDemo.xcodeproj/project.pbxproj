@@ -38,6 +38,9 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8789C46038C043DB8E822C31 /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E719DCD1B1BC43B59FA6AF30 /* libRCTHotUpdate.a */; };
+		A56D285C2165B7E900740F42 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A56D285B2165B7E900740F42 /* libz.tbd */; };
+		A56D285E2165B7FA00740F42 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A56D285D2165B7FA00740F42 /* libbz2.1.0.tbd */; };
 		A5EAB6CC21572D850025B4A5 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EAB6B021572B930025B4A5 /* libRCTPushNotification.a */; };
 		A5EAB7582157B8570025B4A5 /* NativeAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EAB7572157B8570025B4A5 /* NativeAlert.m */; };
 		A5EAB7852157BBEE0025B4A5 /* EventTester.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EAB7842157BBEE0025B4A5 /* EventTester.m */; };
@@ -318,6 +321,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		A56D28592165B7A400740F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6314FBD89274A00987AEAD6 /* RCTHotUpdate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 91C5EFFF1C76ECA90037E727;
+			remoteInfo = RCTHotUpdate;
+		};
 		A5EAB6AF21572B930025B4A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A5EAB69D21572B930025B4A5 /* RCTPushNotification.xcodeproj */;
@@ -368,12 +378,16 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		A56D285B2165B7E900740F42 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A56D285D2165B7FA00740F42 /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
 		A5EAB69D21572B930025B4A5 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		A5EAB7562157B8570025B4A5 /* NativeAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeAlert.h; sourceTree = "<group>"; };
 		A5EAB7572157B8570025B4A5 /* NativeAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeAlert.m; sourceTree = "<group>"; };
 		A5EAB7832157BBEE0025B4A5 /* EventTester.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventTester.h; sourceTree = "<group>"; };
 		A5EAB7842157BBEE0025B4A5 /* EventTester.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventTester.m; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		B6314FBD89274A00987AEAD6 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
+		E719DCD1B1BC43B59FA6AF30 /* libRCTHotUpdate.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTHotUpdate.a; sourceTree = "<group>"; };
 		F1B147CCCDE24243905BB6CC /* libRNMyFancyLibrary.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNMyFancyLibrary.a; sourceTree = "<group>"; };
 		F67B8592E8A844C99BBCC068 /* libRNKevinLibrary.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNKevinLibrary.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -391,6 +405,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56D285E2165B7FA00740F42 /* libbz2.1.0.tbd in Frameworks */,
+				A56D285C2165B7E900740F42 /* libz.tbd in Frameworks */,
 				A5EAB6CC21572D850025B4A5 /* libRCTPushNotification.a in Frameworks */,
 				2CCC50B22154F73E0019E8E6 /* libRCTCameraRoll.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -406,6 +422,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				8789C46038C043DB8E822C31 /* libRCTHotUpdate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +583,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A56D285D2165B7FA00740F42 /* libbz2.1.0.tbd */,
+				A56D285B2165B7E900740F42 /* libz.tbd */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 			);
 			name = Frameworks;
@@ -606,6 +625,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+				B6314FBD89274A00987AEAD6 /* RCTHotUpdate.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -645,6 +665,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A56D28562165B7A400740F42 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A56D285A2165B7A400740F42 /* libRCTHotUpdate.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A5EAB69E21572B930025B4A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,6 +687,7 @@
 			children = (
 				F1B147CCCDE24243905BB6CC /* libRNMyFancyLibrary.a */,
 				F67B8592E8A844C99BBCC068 /* libRNKevinLibrary.a */,
+				E719DCD1B1BC43B59FA6AF30 /* libRCTHotUpdate.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -807,6 +836,10 @@
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
+				},
+				{
+					ProductGroup = A56D28562165B7A400740F42 /* Products */;
+					ProjectRef = B6314FBD89274A00987AEAD6 /* RCTHotUpdate.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
@@ -1115,6 +1148,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A56D285A2165B7A400740F42 /* libRCTHotUpdate.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTHotUpdate.a;
+			remoteRef = A56D28592165B7A400740F42 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A5EAB6B021572B930025B4A5 /* libRCTPushNotification.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1281,12 +1321,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-my-fancy-library/ios",
 					"$(SRCROOT)/../node_modules/react-native-kevin-library/ios",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 				);
 				INFOPLIST_FILE = RNNavigationDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1309,12 +1351,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-my-fancy-library/ios",
 					"$(SRCROOT)/../node_modules/react-native-kevin-library/ios",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 				);
 				INFOPLIST_FILE = RNNavigationDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1339,6 +1383,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 				);
 				INFOPLIST_FILE = RNNavigationDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1365,6 +1410,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 				);
 				INFOPLIST_FILE = RNNavigationDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1396,11 +1442,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-my-fancy-library/ios",
 					"$(SRCROOT)/../node_modules/react-native-kevin-library/ios",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 				);
 				INFOPLIST_FILE = "RNNavigationDemo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1432,11 +1480,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-my-fancy-library/ios",
 					"$(SRCROOT)/../node_modules/react-native-kevin-library/ios",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 				);
 				INFOPLIST_FILE = "RNNavigationDemo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1467,11 +1517,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-my-fancy-library/ios",
 					"$(SRCROOT)/../node_modules/react-native-kevin-library/ios",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 				);
 				INFOPLIST_FILE = "RNNavigationDemo-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1502,11 +1554,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-my-fancy-library/ios",
 					"$(SRCROOT)/../node_modules/react-native-kevin-library/ios",
+					"$(SRCROOT)/../node_modules/react-native-update/ios/RCTHotUpdate/**",
 				);
 				INFOPLIST_FILE = "RNNavigationDemo-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);

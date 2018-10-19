@@ -119,8 +119,12 @@ navigator.geolocation.watchPosition((position) => {
   };
 
   _onPressButton() {
+    
     const {navigate} = this.props.navigation;
-    navigate('Profile', {name: 'Jane'})
+    // navigate('Profile', {name: 'Jane'})
+
+    navigate('PageScollViewScreen');
+    return;
 
     let userHabit = {
       button: 'profileButton',
@@ -235,7 +239,7 @@ navigator.geolocation.watchPosition((position) => {
           textAlign: 'center',
           margin: 10
         }}>Fading in</Text>
-      <Button title="点击跳转主页" onPress={this._onPressButton.bind(this)}/>
+      <Button title="广告轮播" onPress={this._onPressButton.bind(this)}/>
       <Button title="点击跳转电影页面" onPress={this._onPressMoviesButton.bind(this)}/>
       <Button title="点击跳转登录页面" onPress={this._onPressLoginButton}/>
       <Button title="点击跳转sectionList页面" onPress={this._onPressSectionListButton.bind(this)}/>
@@ -250,6 +254,7 @@ navigator.geolocation.watchPosition((position) => {
       <Button title="点击跳转Keyboard页面" onPress={this._pressShowKeyBoardButton.bind(this)}/>
       <Button title="点击跳转Linking页面" onPress={this._pressLinkingButton.bind(this)}/>
       <Button title="点击跳转勋章页面" onPress={this._pressMedalButton.bind(this)}/>
+      <Button title="点击跳转热更新页面" onPress={()=>{this.props.navigation.navigate('HotUpdateScreen')}}/>
 {/* //请注意下列边框圆角样式目前在 iOS 的图片组件上还不支持：
 //borderTopLeftRadius
 //borderTopRightRadius

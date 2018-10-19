@@ -1,0 +1,26 @@
+{
+  "DVTSourceControlWorkspaceBlueprintLocationsKey" : {
+    "B2529464814FD0D362BD0997B3E19BA16E1B088E" : {
+      "DVTSourceControlBranchIdentifierKey" : "master",
+      "DVTSourceControlLocationRevisionKey" : "d8fba89b892fb416935a06bce71ea64b8fb83072",
+      "DVTSourceControlBranchOptionsKey" : 4,
+      "DVTSourceControlBranchRemoteNameKey" : "origin",
+      "DVTSourceControlWorkspaceBlueprintLocationTypeKey" : "DVTSourceControlBranch"
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B2529464814FD0D362BD0997B3E19BA16E1B088E",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EF20A7B2-CAF2-4FFE-BF4C-7B02F329E631",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B2529464814FD0D362BD0997B3E19BA16E1B088E" : "ReacNativeLearning\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RNNavigationDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RNNavigationDemo\/ios\/RNNavigationDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git@github.com:PengKezhu\/ReacNativeLearning.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B2529464814FD0D362BD0997B3E19BA16E1B088E"
+    }
+  ]
+}

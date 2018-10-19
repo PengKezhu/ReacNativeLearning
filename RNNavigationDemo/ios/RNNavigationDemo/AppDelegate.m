@@ -11,14 +11,23 @@
 #import <React/RCTRootView.h>
 #import "RCTLinkingManager.h"
 #import <React/RCTPushNotificationManager.h>
+#import "RCTHotUpdate.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSURL *jsCodeLocation;
+  
+#if DEBUG
+  // 原来的jsCodeLocation保留在这里
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+#else
+  // 非DEBUG情况下启用热更新
+  jsCodeLocation=[RCTHotUpdate bundleURL];
+#endif
+
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"RNNavigationDemo"

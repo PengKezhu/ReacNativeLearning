@@ -3,6 +3,7 @@ package com.rnnavigationdemo;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import cn.reactnative.modules.update.UpdatePackage;
 import com.reactlibrary.RNKevinLibraryPackage;
 import com.reactlibrary.RNMyFancyLibraryPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +26,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new UpdatePackage(),
             new RNKevinLibraryPackage(),
             new RNMyFancyLibraryPackage()
       );

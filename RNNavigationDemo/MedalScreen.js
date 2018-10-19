@@ -9,15 +9,33 @@ import {
     ImageBackground,
     StatusBar,
     TouchableOpacity,
-    Modal
+    Modal,
+    Button,
+    Dimensions
 } from 'react-native'
 
 // create a component
 class ShareAlert extends Component {
     render() {
+        const {width, height} = Dimensions.get('window');
         return (
-            <View style={{flex:1, backgroundColor:'#f6f6f6', justifyContent:'center', alignItems:'center'}}>
-                <Text>MyClass</Text>
+            <View style={{position:'absolute', width:width, height:height, backgroundColor:'#00000088',justifyContent:'center', alignItems:'center'}}>
+                <View style={{backgroundColor: 'white', width: '90%', height: 300, justifyContent:'center', alignItems:'center', borderRadius:8}}>
+                    <Text>{this.props.medal.medalName}</Text>
+                    <Image source={{uri: this.props.medal.imgUrl}} style={{width:100, aspectRatio: 1}}></Image>
+                    <Text style={{textAlign:"center"}}>{new Date().toLocaleDateString()}</Text>
+                    <View style={{ backgroundColor:'red', marginTop: 20}}>
+                        <Button title="分享朋友圈" color='white' onPress={()=>alert('点击了分享朋友圈')}></Button>
+                    </View>
+                    <TouchableOpacity style={{alignSelf:'flex-end', position:'absolute', top:-10, right:-10}} onPress={()=>{
+                        this.props.closeBlcok();
+                    }
+                }>
+                        <Image source={require('./images/close.png')}></Image>
+                    </TouchableOpacity>
+                    
+                </View>
+                
             </View>
         );
     }
@@ -31,11 +49,14 @@ export class MedalScreen extends Component {
       this.state = {
          medals : [],
          loading: true,
-         showShareAlert: false
+         showShareAlert: false,
+         clickedMedal: null,
+         scrollOffsetY: 0
       }
       this._componentWithMedals = this._componentWithMedals.bind(this);
       this._totalMedals = this._totalMedals.bind(this);
       this._shareMedal = this._shareMedal.bind(this);
+      this._getNavigationTitleColor = this._getNavigationTitleColor.bind(this);
     }
 
     static navigationOptions = {
@@ -66,9 +87,9 @@ export class MedalScreen extends Component {
     }
 
     _shareMedal(medal) {
-        // alert('弹出分享框');
         this.setState({
-            showShareAlert : true
+            showShareAlert : true,
+            clickedMedal: medal
         })
     }
 
@@ -77,7 +98,7 @@ export class MedalScreen extends Component {
         var i = 0;
         for (const medal of medals) {
             array.push(
-                <TouchableOpacity style={{width: '33.3%', backgroundColor:'white', marginTop:i > 2 ? 15 : 0}} onPress={this._shareMedal}>
+                <TouchableOpacity style={{width: '33.3%', backgroundColor:'white', marginTop:i > 2 ? 15 : 0}} onPress={() => this._shareMedal(medal)}>
                     {/* <View style={{width: '33.3%', backgroundColor:'white', marginTop:i > 2 ? 15 : 0}}> */}
                         <Image resizeMode="contain" source={{uri: medal.imgUrl}} defaultSource={require('./images/radioHomeDefault.png')} style={{width: '100%', aspectRatio: 1}}></Image>
                         <Text style={{textAlign:'center'}}>{medal.medalName}</Text>
@@ -95,6 +116,17 @@ export class MedalScreen extends Component {
             totalCount += medalGroup.list.length;
         }
         return totalCount;
+    }
+
+    _getNavigationTitleColor (scrollViewOffsetY) {
+        // alert(scrollViewOffsetY);
+        var color = 255 * (1 - scrollViewOffsetY / 60);
+        if (scrollViewOffsetY / 60 > 1) {
+            StatusBar.setBarStyle('dark-content')
+        } else {
+            StatusBar.setBarStyle('light-content')
+        }
+        return 'rgb(' + color +',' + color + ',' + color + ')';
     }
     
 
@@ -118,16 +150,13 @@ export class MedalScreen extends Component {
     }
     return (
         <View style={{flex:1, backgroundColor:'#f6f6f6'}}>
-            <ScrollView style={{flex:1}} contentContainerStyle={{alignItems:'center'}}>
+            <ScrollView scrollEventThrottle={10} style={{flex:1}} contentContainerStyle={{alignItems:'center'}} onScroll={(event)=>{
+                // alert(JSON.stringify (event.nativeEvent));
+                this.setState({scrollOffsetY: event.nativeEvent.contentOffset.y})
+                console.log(this.state.scrollOffsetY);
+            }}>
                 <View style={{width:'100%', aspectRatio:375/190, backgroundColor:'red'}}>
                     <ImageBackground source={require('./images/BG.png')} style={{flex:1, alignItems:"center", justifyContent: 'center'}}>
-                        <View style={{justifyContent:'center', flexDirection:'row', width:'100%', marginTop: 24, height:44, alignItems:'center'}}>
-                            <TouchableOpacity onPress={()=>this.props.navigation.pop()} style={{position: 'absolute', left:20, width: 44, aspectRatio: 1, top:0, justifyContent:'center'}}>
-                                <Image source={require('./images/返回.png')} style={{tintColor:'white'}}></Image>
-                            </TouchableOpacity>
-                            <Text style={{color:'white', fontSize:17,fontWeight:'bold'}}>我的勋章</Text>
-                        </View>
-                        
                         <View style={{marginTop: 15}}>
                             <Text style={{color: 'white', fontSize: 30, fontWeight:"bold"}}>{this._totalMedals(this.state.medals)}<Text style={{fontSize:17}}>枚</Text></Text>
                             <Text style={{color: 'white', fontSize: 17, marginTop:10, textAlign:'center'}}>勋章</Text>
@@ -140,11 +169,20 @@ export class MedalScreen extends Component {
 
             </ScrollView>
             <ActivityIndicator size='large' hidesWhenStopped={true} style={{position:'absolute', top:'50%', left:'50%'}} animating={this.state.loading}></ActivityIndicator>
-            <Modal animationType='fade' transparent={false} visible={this.state.showShareAlert}>
-                <ShareAlert>
+            {/* <Modal animationType='fade' presentationStyle='overFullScreen' transparent={true} visible={this.state.showShareAlert} style={{backgroundColor:'red'}}> */}
+{
+    this.state.showShareAlert ? <ShareAlert medal={this.state.clickedMedal} closeBlcok={()=>this.setState({showShareAlert: false})}></ShareAlert> : null
+}
                     
-                </ShareAlert>
-            </Modal>
+            {/* </Modal> */}
+            <View style={{position:'absolute',width:'100%',justifyContent:'flex-end', height:64,backgroundColor:'rgba(255, 255, 255,' +  + this.state.scrollOffsetY/60 + ')'}}>
+                <View style={{justifyContent:'center',position:'absolute', flexDirection:'row', width:'100%', height:44, alignItems:'center'}}>
+                    <TouchableOpacity onPress={()=>this.props.navigation.pop()} style={{position: 'absolute', left:20, width: 44, aspectRatio: 1, top:0, justifyContent:'center'}}>
+                        <Image source={require('./images/返回.png')} style={{tintColor:this._getNavigationTitleColor(this.state.scrollOffsetY)}}></Image>
+                    </TouchableOpacity>
+                    <Text style={{color:this._getNavigationTitleColor(this.state.scrollOffsetY), fontSize:17,fontWeight:'bold'}}>我的勋章</Text>
+                </View>
+            </View>
         </View>
     )
   }
